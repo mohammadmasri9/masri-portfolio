@@ -1,10 +1,10 @@
 // Everything you see on the site lives here. Edit freely.
 
 import type { StaticImageData } from "next/image";
-import alasayelImg from "./Alasayel-Logo.png";
-import sklrImg from "./SKLR.png";
-import tadbeerImg from "./tadbeer-logo.png";
-import uniconnectImg from "./UniConnect Education Logo.png";
+import alasayelImg from "./alasayel.webp";
+import sklrImg from "./sklr.webp";
+import tadbeerImg from "./tadbeer.webp";
+import uniconnectImg from "./uniconnect.webp";
 
 export const profile = {
   name: "Mohammad Almasri",
@@ -13,7 +13,7 @@ export const profile = {
   location: "Palestine — working worldwide",
   email: "masri.m7md33@gmail.com",
   whatsapp: "https://wa.me/972592621821",
-  cv: "/cv.pdf",
+  cv: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/cv.pdf`,
   availability: "Available for new projects right away",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/mohammad-almasri-5b606525a" },
@@ -217,7 +217,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const process = [
+export const processSteps = [
   {
     title: "Discover",
     prompt: "I need a booking site for my travel agency.",

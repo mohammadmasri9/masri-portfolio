@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import { Check, Loader2, MessageSquare, PanelLeft, Plus } from "lucide-react";
-import { process, profile } from "@/data/site";
+import { processSteps, profile } from "@/data/site";
 import { Heading, Logo } from "./ui";
 
 const TASK_MS = 700;
@@ -14,7 +14,7 @@ export function Process() {
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(0); // tasks finished in the current step
   const [manual, setManual] = useState(false);
-  const s = process[step];
+  const s = processSteps[step];
 
   // Tick tasks while the window is on screen
   useEffect(() => {
@@ -24,7 +24,7 @@ export function Process() {
       return () => clearTimeout(t);
     }
     if (!manual) {
-      const t = setTimeout(() => select((step + 1) % process.length, false), 3200);
+      const t = setTimeout(() => select((step + 1) % processSteps.length, false), 3200);
       return () => clearTimeout(t);
     }
   }, [inView, done, s.tasks.length, manual, step]);
@@ -57,7 +57,7 @@ export function Process() {
         <div className="grid md:grid-cols-[230px_1fr]">
           {/* Steps */}
           <nav aria-label="Process steps" className="flex gap-1 overflow-x-auto border-b border-line p-2 md:flex-col md:border-b-0 md:border-r">
-            {process.map((p, i) => (
+            {processSteps.map((p, i) => (
               <button
                 key={p.title}
                 onClick={() => select(i)}
